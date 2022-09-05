@@ -41,17 +41,21 @@ class LockIn7270:
         # dev.write(1, "TC 12")  # 100 ms time constant
         # dev.write(1, "FET 0")  # bipolar device
     """
-    def __init__(self, id_vendor=2605, id_product=27, cmds=SETUP_CMDS):
+    ID_VENDOR = 2605
+    ID_VENDOR = 27
+    def __init__(self, cmds=SETUP_CMDS):
         """ Initialize class.
          
             Paramaters
             ----------
-            id_vendor : int 
-                ...
-            id_product : int 
-                ...
-            cmds : dict
-                ...
+            cmds : dict {str : int>
+                Dictionary containing system parameters the lock in amplifier
+                should be ran at. key: command name (str), value: command value
+                (int). 
+                Default -> 
+                    "REMODE": 0, "VMODE": 3, "IE": 0,
+                    "DCCOUPLE": 0, "FLOAT": 1, "TC": 12, "FET": 0.
+                    See lock in manual for more details. 
         """
         self.dev = usb.core.find(idVendor=id_vendor, idProduct=id_product)
         self.dev.set_configuration()

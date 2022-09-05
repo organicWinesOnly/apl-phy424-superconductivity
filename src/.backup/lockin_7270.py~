@@ -41,17 +41,17 @@ class LockIn7270:
         # dev.write(1, "TC 12")  # 100 ms time constant
         # dev.write(1, "FET 0")  # bipolar device
     """
-    def __init__(self, id_vendor=2605, id_product=27, cmds=SETUP_CMDS):
+    ID_VENDOR = 2605
+    ID_VENDOR = 27
+    def __init__(self, cmds=SETUP_CMDS):
         """ Initialize class.
          
             Paramaters
             ----------
-            id_vendor : int 
-                ...
-            id_product : int 
-                ...
-            cmds : dict
-                ...
+            cmds : dict {str : int>
+                Dictionary containing system parameters the lock in amplifier
+                should be ran at. key: command name (str), value: command value
+                (int).
         """
         self.dev = usb.core.find(idVendor=id_vendor, idProduct=id_product)
         self.dev.set_configuration()
@@ -116,7 +116,12 @@ class LockIn7270:
             Paramaters
             ----------
             bit_ : int
-                ....
+                Integer corresponding to which curve to aquire.
+                0 - X values
+                1 - Y values
+                3 - Phase values
+                4 - Sensitivity
+                5 - Noise
         """
         output = array.array('B')
         self.dev.write(1, "DCB {}".format(bit_))
