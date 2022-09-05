@@ -1,4 +1,5 @@
 data/*
-.backup/*
+.backup/
 *.ipynb
+*.ipy
 *.hdf5
