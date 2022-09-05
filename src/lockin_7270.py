@@ -116,7 +116,12 @@ class LockIn7270:
             Paramaters
             ----------
             bit_ : int
-                ....
+                Integer corresponding to which curve to aquire.
+                0 - X values
+                1 - Y values
+                3 - Phase values
+                4 - Sensitivity
+                5 - Noise
         """
         output = array.array('B')
         self.dev.write(1, "DCB {}".format(bit_))
@@ -148,6 +153,25 @@ class LockIn7270:
             events, lock, 
             sample_rate=10000, len_=1000000):
         """ Run curve aquistion.
+            
+            Parameters
+            ----------
+            curr_fin_voltage : (int, int)
+                (current, final) voltages of the aquistion run. <current> is the
+                current voltage reading of the transdiode of the sample and
+                <final>, is the final voltage reading on the sample transdiode at
+                which to stop the aquistion.
+            events : List[threading.Event()]
+                List of 3 event objects that control the syncronization of data
+                device measurement with the osciliscope.
+            lock : threading.Lock() 
+                Lock object to prevent LockIn7270 and Osciliscope objects from
+                reading/writing the <curr_fin_voltage> at the same time.
+            sample_rate : int
+                Time steps between measurements in microseconds (minimum: 1 - in fast
+                mode; 1000 standard mode)
+            len_ : int
+                Number of measuremnts to store (max = 100,000)
         """
         print("Lock in running.")
         with lock:
