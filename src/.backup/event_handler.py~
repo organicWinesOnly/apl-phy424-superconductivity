@@ -14,7 +14,7 @@ class EventHandler:
         # self.data = DataField()
 
     def run(self, set_voltage, sample_rate=10000, len_=100000):
-        print("Begging data aquisition")
+        print("Begining data aquisition...")
         scope_output = []
         lock_in_ouput = []
         self.lock_in.set_up()

@@ -13,7 +13,21 @@ SETUP_CMDS = {
 
 
 class LockIn7270:
-    """
+    """ Instance of an Ametek 7270 lock in amplifier
+
+
+       Public Methods
+       --------------
+       query(..) - write and read commands to device
+       setup(..) - update device settings
+       curve_setup(..) - update device settings for new curve measurement
+       run(..) - complete curve measurements
+       read_curve(..) - read curve data for a single attribute into data buffer
+       read_all_curves - read all curves into data buffer
+
+       Public Variables
+       ----------------
+       
         # dev.write(1, "REFMODE 0")  # single reference mode
         # dev.write(1, "IE 0")  # internal reference
         # dev.write(1, "VMODE 3")  # A-B differential mode
@@ -35,15 +49,26 @@ class LockIn7270:
         self.ep_out = self.dev[0].interfaces()[0].endpoints()[0]  # bulk out
         self.data = {0: [], 1: [], 3: [], 4: [], 5: []}  
 
-    def query(self, cmd):
+    def query(self, cmd, silent=False):
+        """ Write and read a command to the lock in instrument.
+            
+            Paramaters
+            ----------
+            cmd : str
+                The command.
+            silent : bool
+                Wheter the read message should be printed to the screen.
+        """
         self.dev.write(1, cmd)
         try:
             output = self.dev.read(
                 self.ep_in.bEndpointAddress, 
                 self.ep_in.wMaxPacketSize)
-            print(output.tobytes().decode("utf-8"))
+            if !silent:
+                print(output.tobytes().decode("utf-8"))
         except:
-            print('')
+            if !silent:
+                print('')
 
     def set_up(self):
         for cmd, value in self.paramaters.items():
@@ -99,19 +124,8 @@ class LockIn7270:
             self.dev.write(1, "TD")
             print("Lock in: taking data")
             time.sleep(len_ * sample_rate / 1e6 + 1e-5)
-            events[1].set()
             print("Lock in: saving data")
             self.read_all_curves()
+            events[1].wait()
             print("Lock in: data saved")
-
-
-    def query(self, cmd):
-        self.dev.write(1, cmd)
-        try:
-            output = self.dev.read(
-                self.ep_in.bEndpointAddress, 
-                self.ep_in.wMaxPacketSize)
-            print(output.tobytes().decode("utf-8"))
-        except:
-            print('')
 
