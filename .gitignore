@@ -1,8 +1,8 @@
-__pycache__/
+**/__pycache__/
 data/*
 **/.backup/
 **/etc/
-instruction-manual/output/
+/instruction-manual/output/
 
 *.ipynb
 *.ipy
