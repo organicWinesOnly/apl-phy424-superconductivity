@@ -1,5 +1,12 @@
 data/*
-.backup/
+**/.backup
+**/etc
+instruction-manual/output
+
 *.ipynb
 *.ipy
 *.hdf5
+*.~
+*.swp
+*.swo
+*.icloud
