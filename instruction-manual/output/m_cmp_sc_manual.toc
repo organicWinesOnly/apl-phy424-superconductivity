@@ -1,6 +1,14 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}
 \contentsline {section}{\numberline {2}Background}{1}{section.2}
-\contentsline {section}{\numberline {3}Experiment}{1}{section.3}
-\contentsline {section}{\numberline {4}Method}{2}{section.4}
-\contentsline {section}{\numberline {5}Appendix}{2}{section.5}
-\contentsline {section}{\numberline {6}Cryostat}{2}{section.6}
+\contentsline {section}{\numberline {3}Activities}{3}{section.3}
+\contentsline {subsection}{\numberline {3.1}Cryostat Exercise}{3}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Calibrating Transdiodes}{3}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Controlling the temperature controller}{4}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Testing your method}{4}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Complete a run}{5}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}Things to look for}{5}{subsection.3.6}
+\contentsline {section}{\numberline {4}Appendix}{6}{section.4}
+\contentsline {subsection}{\numberline {4.1}Cryostat and Vacuum Pump}{6}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Parts}{7}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Temperature Control and Measurements}{7}{subsubsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.3}Operation}{9}{subsubsection.4.1.3}
